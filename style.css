@@ -1,0 +1,28 @@
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+#table {
+  width: 90%;
+  max-width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(18, auto);
+}
+
+.element {
+  width: 4.5vw;
+  border: solid 1px black;
+  aspect-ratio: 1;
+}
+
+.cell-2 {
+  grid-column-start: -2;
+}
+
+.cell-5,
+.cell-13 {
+  grid-column-start: 13;
+}

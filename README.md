@@ -14,7 +14,7 @@ You can skip an element and you can also choose which part of the periodic table
 
 ### Structure
 
-- [ ] Display the periodic table of elements which their symbol, but hide their name
+- [ ] Display the periodic table of elements with their symbol, but hide their name
 - [ ] Add a start play button
 - [ ] Randomly select an element
 - [ ] Display the element in the middle of the screen
