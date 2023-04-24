@@ -22,3 +22,8 @@ You can skip an element and you can also choose which part of the periodic table
 - [ ] Assess the answer given by the user
 - [ ] If OK, color the element and add its name in the table
 - [ ] If not, update the input and add a letter
+
+### Data
+
+Data from:
+https://github.com/Bowserinator/Periodic-Table-JSON
