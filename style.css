@@ -58,7 +58,7 @@ p {
 
 .elm-hover:hover,
 .elm-hover:focus {
-  background-color: crimson;
+  background-color: #cf1439;
   cursor: pointer;
 }
 
@@ -83,10 +83,19 @@ p {
   backdrop-filter: blur(2px);
 }
 
+.hide-dialog {
+  display: none;
+}
+
 .dialog-style {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
   padding: 2rem;
   margin: auto;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: #ffffff80;
   width: 40%;
   display: grid;
   place-items: center;
@@ -109,13 +118,17 @@ p {
 }
 
 #hint-btn {
-  width: 25ch;
-  height: 2vw;
-  opacity: 0.5;
-  outline: #192d2d;
+  width: 10ch;
+  height: 1.5vw;
+  opacity: 0.8;
+  color: #000;
+  background-color: #dee6ed;
+  display: grid;
+  place-content: center;
   cursor: pointer;
 }
 
 .good-answer {
-  background-color: rgb(101, 150, 28);
+  background-color: #65961c;
+  pointer-events: none;
 }

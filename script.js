@@ -19,37 +19,32 @@ elements.forEach((element, i) => {
 
 document.querySelectorAll(".element").forEach((element) => {
   element.addEventListener("click", () => {
-    let placeholder = dialog.children[0];
-    let newElement = element.cloneNode(true);
-    placeholder.replaceWith(newElement);
+    const placeholder = dialog.children[0];
+    let clonedElement = element.cloneNode(true);
+
+    placeholder.replaceWith(clonedElement);
 
     dialog.classList.add("dialog-style");
-    dialog.showModal();
-
-    dialog.addEventListener("close", () => {
-      input.value = "";
-      input.classList.remove("good-answer");
-      dialog.classList.remove("dialog-style");
-    });
+    input.focus();
+    input.select();
   });
 });
 
-document.querySelector("#input").addEventListener("keyup", () => {
+document.querySelector("#input").addEventListener("keyup", (event) => {
   let selectedElement = document.querySelector("#dialog").children[0];
   let goodAnswer = selectedElement.children[2].textContent;
   let selectedElementCell = selectedElement.classList[2];
 
   let answer = input.value;
-
   if (answer.toLocaleLowerCase() === goodAnswer.toLocaleLowerCase()) {
-    input.classList.add("good-answer");
     let element = document.querySelector(`.${selectedElementCell}`);
     element.classList.remove("elm-hover");
-    let elementDone = element.cloneNode(true);
-    elementDone.classList.add("good-answer");
-    elementDone.children[2].classList.add("show-name");
-    element.replaceWith(elementDone);
-    dialog.close();
+    element.classList.add("good-answer");
+    element.children[2].classList.add("show-name");
+    input.value = "";
+
+    dialog.classList.remove("dialog-style");
+    dialog.classList.add("hide-dialog");
   } else {
     input.classList.remove("good-answer");
   }
