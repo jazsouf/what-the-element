@@ -31,14 +31,6 @@ p {
   gap: 0.2vw;
 }
 
-.element {
-  width: 4.5vw;
-  border: solid 1px #dee6ed;
-  aspect-ratio: 1;
-  display: flex;
-  flex-direction: column;
-}
-
 .cell-2 {
   grid-column-start: -2;
 }
@@ -51,4 +43,20 @@ p {
 .cell-58,
 .cell-90 {
   grid-column-start: 3;
+}
+
+.element {
+  width: 4.5vw;
+  border: solid 1px #dee6ed;
+  aspect-ratio: 1;
+  padding: 0.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.element .name {
+  font-size: 0.6vw;
+  /* visibility: hidden; */
 }
