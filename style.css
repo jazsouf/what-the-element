@@ -47,8 +47,8 @@ p {
 
 .element {
   width: 4.5vw;
-  border: solid 1px #dee6ed;
   aspect-ratio: 1;
+  border: solid 1px #dee6ed;
   padding: 0.2rem;
   display: flex;
   flex-direction: column;
@@ -56,7 +56,55 @@ p {
   align-items: center;
 }
 
+.element:hover,
+.element:focus {
+  background-color: crimson;
+  cursor: pointer;
+}
+
 .element .name {
   font-size: 0.6vw;
-  /* visibility: hidden; */
+  visibility: hidden;
+}
+
+.element .symbol {
+  font-size: 1.4vw;
+}
+
+.element .number {
+  font-size: 0.7vw;
+}
+
+#dialog {
+  margin: auto;
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 40%;
+  display: grid;
+  place-items: center;
+  gap: 2rem;
+}
+
+#form {
+  padding: 2rem;
+  display: none;
+}
+
+#input {
+  width: 25ch;
+  height: 2vw;
+}
+
+#dialog::backdrop {
+  backdrop-filter: blur(2px);
+}
+
+#ans-btn {
+  width: 25ch;
+  height: 2vw;
+  opacity: 0.5;
+  outline: #192d2d;
+}
+
+.good-answer {
+  background-color: green;
 }
