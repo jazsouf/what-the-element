@@ -75,7 +75,8 @@ p {
   font-size: 0.7vw;
 }
 
-#dialog {
+.dialog-style {
+  padding: 2rem;
   margin: auto;
   background-color: rgba(255, 255, 255, 0.5);
   width: 40%;
@@ -85,7 +86,6 @@ p {
 }
 
 #form {
-  padding: 2rem;
   display: none;
 }
 
