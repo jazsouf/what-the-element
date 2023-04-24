@@ -1,6 +1,9 @@
 import { elements } from "./elements.js";
 
 const table = document.getElementById("table");
+let dialog = document.getElementById("dialog");
+let form = document.getElementById("form");
+let input = document.querySelector("#input");
 
 elements.forEach((element, i) => {
   let cell = document.querySelector(`.cell-${i + 1}`);
@@ -16,9 +19,6 @@ elements.forEach((element, i) => {
 
 document.querySelectorAll(".element").forEach((element) => {
   element.addEventListener("click", () => {
-    let dialog = document.getElementById("dialog");
-    let form = document.getElementById("form");
-
     let placeholder = dialog.children[0];
     let newElement = element.cloneNode(true);
     placeholder.replaceWith(newElement);
@@ -27,8 +27,31 @@ document.querySelectorAll(".element").forEach((element) => {
     dialog.showModal();
 
     dialog.addEventListener("close", () => {
+      input.value = "";
+      input.classList.remove("good-answer");
       newElement.replaceWith(placeholder);
       dialog.classList.remove("dialog-style");
     });
   });
+});
+
+document.querySelector("#input").addEventListener("keyup", () => {
+  let selectedElement = document.querySelector("#dialog").children[0];
+  let goodAnswer = selectedElement.children[2].textContent;
+  let selectedElementCell = selectedElement.classList[2];
+
+  let answer = input.value;
+
+  if (answer.toLocaleLowerCase() === goodAnswer.toLocaleLowerCase()) {
+    input.classList.add("good-answer");
+    let element = document.querySelector(`.${selectedElementCell}`);
+    element.classList.remove("elm-hover");
+    let elementDone = element.cloneNode(true);
+    elementDone.classList.add("good-answer");
+
+    elementDone.children[2].classList.add("show-name");
+    element.replaceWith(elementDone);
+  } else {
+    input.classList.remove("good-answer");
+  }
 });

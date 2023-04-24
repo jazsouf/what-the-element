@@ -56,15 +56,19 @@ p {
   align-items: center;
 }
 
-.element:hover,
-.element:focus {
+.elm-hover:hover,
+.elm-hover:focus {
   background-color: crimson;
   cursor: pointer;
 }
 
-.element .name {
+.name {
   font-size: 0.6vw;
   visibility: hidden;
+}
+
+.show-name {
+  visibility: visible;
 }
 
 .element .symbol {
@@ -85,10 +89,6 @@ p {
   gap: 2rem;
 }
 
-#form {
-  display: none;
-}
-
 #input {
   width: 25ch;
   height: 2vw;
@@ -106,5 +106,5 @@ p {
 }
 
 .good-answer {
-  background-color: green;
+  background-color: rgb(101, 150, 28);
 }
