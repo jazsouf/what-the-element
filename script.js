@@ -29,7 +29,6 @@ document.querySelectorAll(".element").forEach((element) => {
     dialog.addEventListener("close", () => {
       input.value = "";
       input.classList.remove("good-answer");
-      newElement.replaceWith(placeholder);
       dialog.classList.remove("dialog-style");
     });
   });
@@ -48,9 +47,9 @@ document.querySelector("#input").addEventListener("keyup", () => {
     element.classList.remove("elm-hover");
     let elementDone = element.cloneNode(true);
     elementDone.classList.add("good-answer");
-
     elementDone.children[2].classList.add("show-name");
     element.replaceWith(elementDone);
+    dialog.close();
   } else {
     input.classList.remove("good-answer");
   }

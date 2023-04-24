@@ -79,6 +79,10 @@ p {
   font-size: 0.7vw;
 }
 
+#dialog::backdrop {
+  backdrop-filter: blur(2px);
+}
+
 .dialog-style {
   padding: 2rem;
   margin: auto;
@@ -89,20 +93,27 @@ p {
   gap: 2rem;
 }
 
+#form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 2rem;
+}
+
 #input {
   width: 25ch;
   height: 2vw;
+  text-align: center;
 }
 
-#dialog::backdrop {
-  backdrop-filter: blur(2px);
-}
-
-#ans-btn {
+#hint-btn {
   width: 25ch;
   height: 2vw;
   opacity: 0.5;
   outline: #192d2d;
+  cursor: pointer;
 }
 
 .good-answer {
