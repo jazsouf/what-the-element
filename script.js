@@ -1,10 +1,13 @@
+//import data
 import { elements } from "./elements.js";
 
+//define global variables
 const table = document.getElementById("table");
 let dialog = document.getElementById("dialog");
 let form = document.getElementById("form");
-let input = document.querySelector("#input");
+let input = document.getElementById("input");
 
+//assign data to cells
 elements.forEach((element, i) => {
   let cell = document.querySelector(`.cell-${i + 1}`);
 
@@ -17,6 +20,7 @@ elements.forEach((element, i) => {
   name.innerText = element.name;
 });
 
+//set input field
 document.querySelectorAll(".element").forEach((element) => {
   element.addEventListener("click", () => {
     const placeholder = dialog.children[0];
@@ -30,14 +34,15 @@ document.querySelectorAll(".element").forEach((element) => {
   });
 });
 
-document.querySelector("#input").addEventListener("keyup", (event) => {
-  let selectedElement = document.querySelector("#dialog").children[0];
+//check user's answer
+input.addEventListener("keyup", (event) => {
+  let selectedElement = dialog.children[0];
   let goodAnswer = selectedElement.children[2].textContent;
-  let selectedElementCell = selectedElement.classList[2];
+  let selectedElementClass = selectedElement.classList[2];
 
   let answer = input.value;
   if (answer.toLocaleLowerCase() === goodAnswer.toLocaleLowerCase()) {
-    let element = document.querySelector(`.${selectedElementCell}`);
+    let element = document.querySelector(`.${selectedElementClass}`);
     element.classList.remove("elm-hover");
     element.classList.add("good-answer");
     element.children[2].classList.add("show-name");

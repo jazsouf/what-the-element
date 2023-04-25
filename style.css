@@ -9,7 +9,7 @@
 body {
   padding-right: 1vw;
   padding-left: 1vw;
-  background-color: #192d2d;
+  background-color: #192e2e;
   color: #dee6ed;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -58,7 +58,7 @@ p {
 
 .elm-hover:hover,
 .elm-hover:focus {
-  background-color: #cf1439;
+  background-color: #dc143c;
   cursor: pointer;
 }
 
@@ -79,9 +79,9 @@ p {
   font-size: 0.7vw;
 }
 
-#dialog::backdrop {
+/* #dialog::backdrop {
   backdrop-filter: blur(2px);
-}
+} */
 
 .hide-dialog {
   display: none;
@@ -95,11 +95,15 @@ p {
   z-index: 1;
   padding: 2rem;
   margin: auto;
-  background-color: #ffffff80;
-  width: 40%;
-  display: grid;
-  place-items: center;
+  background-color: #192e2e;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 2rem;
+  border-radius: 6px;
+  box-shadow: 0px 0px 500px #dc143c;
 }
 
 #form {
@@ -119,12 +123,12 @@ p {
 
 #hint-btn {
   width: 10ch;
-  height: 1.5vw;
-  opacity: 0.8;
-  color: #000;
-  background-color: #dee6ed;
-  display: grid;
-  place-content: center;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 100;
+  border: #dee6ed 1px solid;
+  background-color: #192e2e;
+  color: #dee6ed;
   cursor: pointer;
 }
 

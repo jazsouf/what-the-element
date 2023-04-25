@@ -14,13 +14,13 @@ You can skip an element and you can also choose which part of the periodic table
 
 ### Structure
 
-- [ ] Display the periodic table of elements with their symbol, but hide their name
+- [x] Display the periodic table of elements with their symbol, but hide their name
 - [ ] Add a start play button
 - [ ] Randomly select an element
-- [ ] Display the element in the middle of the screen
-- [ ] Add an input field for the user to guess the name of the element
-- [ ] Assess the answer given by the user
-- [ ] If OK, color the element and add its name in the table
+- [x] Display the element in the middle of the screen
+- [x] Add an input field for the user to guess the name of the element
+- [x] Assess the answer given by the user
+- [x] If OK, color the element and add its name in the table
 - [ ] If not, update the input and add a letter
 
 ### Data
