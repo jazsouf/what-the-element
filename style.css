@@ -2,6 +2,11 @@
   --sizing: 0px;
 }
 
+.element > *::selection {
+  color: none;
+  background-color: transparent;
+}
+
 *,
 ::after,
 ::before {
@@ -95,10 +100,6 @@ body {
   font-size: 0.7vw;
 }
 
-/* #dialog::backdrop {
-  backdrop-filter: blur(2px);
-} */
-
 .hide {
   display: none;
 }
@@ -154,5 +155,6 @@ body {
 
 .good-answer {
   background-color: #65961c;
+  transition: background-color 0.5s;
   pointer-events: none;
 }

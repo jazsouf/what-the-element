@@ -60,7 +60,7 @@ input.addEventListener("keyup", () => {
   let goodAnswer = selectedElement.children[2].textContent;
   let selectedElementClass = selectedElement.classList[2];
 
-  //correct answer
+  //if correct answer at keyup
   let answer = input.value;
   if (answer.toLocaleLowerCase() === goodAnswer.toLocaleLowerCase()) {
     let element = table.querySelector(`.${selectedElementClass}`);
@@ -94,11 +94,11 @@ hintBtn.addEventListener("click", () => {
       }
     }
     if (hint.toLocaleLowerCase() === goodAnswer.slice(0, -1)) {
-      hintBtn.textContent = "Come on, guess the last letter !";
+      hintBtn.textContent = "Come on, guess the last letter!";
     } else {
       hint += goodAnswer[hint.length];
-      input.value = hint;
     }
+    input.value = hint;
   }
   input.focus();
 });
