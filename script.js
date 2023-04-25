@@ -2,10 +2,12 @@
 import { elements } from "./elements.js";
 
 //define global variables
+const root = document.querySelector(":root");
 const table = document.getElementById("table");
 let dialog = document.getElementById("dialog");
 let hintBtn = document.getElementById("hint-btn");
 let input = document.getElementById("input");
+let errorNumber = 0;
 
 //assign data to cells
 elements.forEach((element, i) => {
@@ -34,13 +36,21 @@ document.querySelectorAll(".element").forEach((element) => {
   });
 });
 
-//close input field
+//close input field + enter wrong input
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     input.value = "";
     dialog.classList.remove("dialog-style");
+    dialog.classList.remove("wrong-enter");
     dialog.classList.add("hide-dialog");
     hintBtn.textContent = "Get a hint";
+    errorNumber = 0;
+  }
+  if (event.key === "Enter" && dialog.style.display !== "none") {
+    dialog.classList.add("wrong-enter");
+    errorNumber++;
+    root.style.setProperty("--sizing", `${errorNumber * 10}` + "px");
+    console.log(errorNumber);
   }
 });
 
@@ -50,6 +60,7 @@ input.addEventListener("keyup", () => {
   let goodAnswer = selectedElement.children[2].textContent;
   let selectedElementClass = selectedElement.classList[2];
 
+  //correct answer
   let answer = input.value;
   if (answer.toLocaleLowerCase() === goodAnswer.toLocaleLowerCase()) {
     let element = table.querySelector(`.${selectedElementClass}`);
@@ -59,11 +70,14 @@ input.addEventListener("keyup", () => {
 
     input.value = "";
     dialog.classList.remove("dialog-style");
+    dialog.classList.remove("wrong-enter");
     dialog.classList.add("hide-dialog");
     hintBtn.textContent = "Get a hint";
-  } else {
-    input.classList.remove("good-answer");
+    errorNumber = 0;
   }
+  // else {
+  //   input.classList.remove("good-answer");
+  // }
 });
 
 //add a hint
