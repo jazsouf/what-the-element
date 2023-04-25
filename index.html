@@ -10,11 +10,22 @@
     <script type="module" src="./elements.js"></script>
   </head>
   <body>
-    <h1 class="title">WHAT THE ELEMENT ?!</h1>
-    <p class="description">Select an element and guess its name in English.</p>
-    <form action="">
-      <button id="reset-btn" type="submit">Reset table</button>
-    </form>
+    <div id="start-menu">
+      <h1 class="title">WHAT THE ELEMENT ?!</h1>
+      <p class="intro">
+        Welcome! Do you want to learn about the elements in the universe? Get
+        ready...
+      </p>
+      <p class="description">
+        Select an element and guess its name in English. Try your best ;)
+      </p>
+      <button id="start-btn" class="elm-hover fake-element">
+        <div class="number">420</div>
+        <div class="symbol">START</div>
+        <div class="name">guess my name</div>
+      </button>
+    </div>
+
     <div id="table">
       <div class="elm-hover element cell-1">
         <div class="number"></div>
@@ -606,6 +617,10 @@
         <div class="symbol"></div>
         <div class="name"></div>
       </div>
+    </div>
+    <div id="scoresheet" class="">
+      <div><span id="score">0</span>/118</div>
+      <button id="reset-btn">Reset score</button>
     </div>
     <div id="dialog" class="hide">
       <div>placeholder</div>

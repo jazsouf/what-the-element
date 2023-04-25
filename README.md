@@ -15,8 +15,8 @@ You can skip an element and you can also choose which part of the periodic table
 ### Structure / TODO
 
 - [x] Display the periodic table of elements with their symbol, but hide their name
-- [ ] Add a start play button
-- [ ] Randomly select an element
+- [x] Add a start menu
+- [ ] Randomly select an element mode
 - [x] Display the element in the middle of the screen
 - [x] Add an input field for the user to guess the name of the element
 - [x] Assess the answer given by the user:
@@ -25,8 +25,11 @@ You can skip an element and you can also choose which part of the periodic table
 - [x] Add the possibility to escape the dialog box
 - [x] Add reset button (hard reset)
 - [ ] Update reset to soft
-- [ ] Add score count
+- [x] Add score count
 - [x] Add interaction with the "Enter" key
+- [ ] Add a footer
+- [ ] Block the user from clicking on a other element
+- [ ] Start button animation
 
 ### Data
 

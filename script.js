@@ -1,15 +1,6 @@
 //import data
 import { elements } from "./elements.js";
 
-//define global variables
-const root = document.querySelector(":root");
-const table = document.getElementById("table");
-let dialog = document.getElementById("dialog");
-let hintBtn = document.getElementById("hint-btn");
-let resetBtn = document.getElementById("reset-btn");
-let input = document.getElementById("input");
-let errorNumber = 0;
-
 //assign data to cells
 elements.forEach((element, i) => {
   let cell = document.querySelector(`.cell-${i + 1}`);
@@ -22,6 +13,39 @@ elements.forEach((element, i) => {
   symbol.innerText = element.symbol;
   name.innerText = element.name;
 });
+
+//define global variables
+const root = document.querySelector(":root");
+const table = document.getElementById("table");
+let dialog = document.getElementById("dialog");
+let hintBtn = document.getElementById("hint-btn");
+let resetBtn = document.getElementById("reset-btn");
+let startMenu = document.getElementById("start-menu");
+let startBtn = document.getElementById("start-btn");
+let scoreCount = document.getElementById("score");
+let input = document.getElementById("input");
+
+//start game
+startBtn.addEventListener("click", showTable);
+
+//reset game without start-menu showing (https://jsfiddle.net/barmar/5sL3hd74/)
+function showTable() {
+  startMenu.style.display = "none";
+}
+
+window.onload = function () {
+  let reloading = sessionStorage.getItem("reloading");
+  if (reloading) {
+    sessionStorage.removeItem("reloading");
+    showTable();
+  }
+};
+
+function reloadPage() {
+  sessionStorage.setItem("reloading", "true");
+  document.location.reload();
+}
+resetBtn.addEventListener("click", reloadPage);
 
 //show input field
 document.querySelectorAll(".element").forEach((element) => {
@@ -38,6 +62,7 @@ document.querySelectorAll(".element").forEach((element) => {
 });
 
 //close input field + enter wrong input
+let errorNumber = 0;
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     input.value = "";
@@ -67,7 +92,7 @@ input.addEventListener("keyup", () => {
     element.classList.remove("elm-hover");
     element.classList.add("good-answer");
     element.children[2].classList.add("show-name");
-
+    scoreCount.innerText++;
     input.value = "";
     dialog.classList.remove("dialog-style");
     dialog.classList.remove("wrong-enter");
