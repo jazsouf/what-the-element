@@ -21,7 +21,7 @@ You can skip an element and you can also choose which part of the periodic table
 - [x] Add an input field for the user to guess the name of the element
 - [x] Assess the answer given by the user:
 - [x] If OK, color the element and add its name in the table
-- [ ] If not, update the input and add a letter
+- [x] If not, update the input and add a letter
 - [x] Add the possibility to escape the dialog box
 
 ### Data

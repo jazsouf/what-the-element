@@ -4,7 +4,7 @@ import { elements } from "./elements.js";
 //define global variables
 const table = document.getElementById("table");
 let dialog = document.getElementById("dialog");
-let form = document.getElementById("form");
+let hintBtn = document.getElementById("hint-btn");
 let input = document.getElementById("input");
 
 //assign data to cells
@@ -40,18 +40,19 @@ document.addEventListener("keydown", (event) => {
     input.value = "";
     dialog.classList.remove("dialog-style");
     dialog.classList.add("hide-dialog");
+    hintBtn.textContent = "Get a hint";
   }
 });
 
 //check user's answer
-input.addEventListener("keyup", (event) => {
+input.addEventListener("keyup", () => {
   let selectedElement = dialog.children[0];
   let goodAnswer = selectedElement.children[2].textContent;
   let selectedElementClass = selectedElement.classList[2];
 
   let answer = input.value;
   if (answer.toLocaleLowerCase() === goodAnswer.toLocaleLowerCase()) {
-    let element = document.querySelector(`.${selectedElementClass}`);
+    let element = table.querySelector(`.${selectedElementClass}`);
     element.classList.remove("elm-hover");
     element.classList.add("good-answer");
     element.children[2].classList.add("show-name");
@@ -59,7 +60,32 @@ input.addEventListener("keyup", (event) => {
     input.value = "";
     dialog.classList.remove("dialog-style");
     dialog.classList.add("hide-dialog");
+    hintBtn.textContent = "Get a hint";
   } else {
     input.classList.remove("good-answer");
   }
+});
+
+//add a hint
+hintBtn.addEventListener("click", () => {
+  let selectedElement = dialog.children[0];
+  let goodAnswer = selectedElement.children[2].textContent.toLocaleLowerCase();
+
+  let answer = input.value.toLocaleLowerCase();
+  let hint = goodAnswer[0].toLocaleUpperCase();
+
+  if (answer !== goodAnswer) {
+    for (let i = 1; i < goodAnswer.length - 1; i++) {
+      if (answer[i] === goodAnswer[i]) {
+        hint += answer[i];
+      }
+    }
+    if (hint.toLocaleLowerCase() === goodAnswer.slice(0, -1)) {
+      hintBtn.textContent = "Come on, guess the last letter !";
+    } else {
+      hint += goodAnswer[hint.length];
+      input.value = hint;
+    }
+  }
+  input.focus();
 });
