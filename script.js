@@ -20,7 +20,7 @@ elements.forEach((element, i) => {
   name.innerText = element.name;
 });
 
-//set input field
+//show input field
 document.querySelectorAll(".element").forEach((element) => {
   element.addEventListener("click", () => {
     const placeholder = dialog.children[0];
@@ -32,6 +32,15 @@ document.querySelectorAll(".element").forEach((element) => {
     input.focus();
     input.select();
   });
+});
+
+//close input field
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    input.value = "";
+    dialog.classList.remove("dialog-style");
+    dialog.classList.add("hide-dialog");
+  }
 });
 
 //check user's answer
@@ -46,8 +55,8 @@ input.addEventListener("keyup", (event) => {
     element.classList.remove("elm-hover");
     element.classList.add("good-answer");
     element.children[2].classList.add("show-name");
-    input.value = "";
 
+    input.value = "";
     dialog.classList.remove("dialog-style");
     dialog.classList.add("hide-dialog");
   } else {

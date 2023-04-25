@@ -103,7 +103,7 @@ p {
   justify-content: center;
   gap: 2rem;
   border-radius: 6px;
-  box-shadow: 0px 0px 500px #dc143c;
+  box-shadow: 0px 0px 5px 5px #dc143c inset;
 }
 
 #form {
@@ -127,6 +127,7 @@ p {
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-weight: 100;
   border: #dee6ed 1px solid;
+  padding: 0.4em 0;
   background-color: #192e2e;
   color: #dee6ed;
   cursor: pointer;
