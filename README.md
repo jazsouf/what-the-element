@@ -23,7 +23,8 @@ You can skip an element and you can also choose which part of the periodic table
 - [x] If OK, color the element and add its name in the table
 - [x] If not, update the input and add a letter
 - [x] Add the possibility to escape the dialog box
-- [ ] Add reset button
+- [x] Add reset button (hard reset)
+- [ ] Update reset to soft
 - [ ] Add score count
 - [x] Add interaction with the "Enter" key
 

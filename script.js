@@ -6,6 +6,7 @@ const root = document.querySelector(":root");
 const table = document.getElementById("table");
 let dialog = document.getElementById("dialog");
 let hintBtn = document.getElementById("hint-btn");
+let resetBtn = document.getElementById("reset-btn");
 let input = document.getElementById("input");
 let errorNumber = 0;
 
@@ -42,15 +43,14 @@ document.addEventListener("keydown", (event) => {
     input.value = "";
     dialog.classList.remove("dialog-style");
     dialog.classList.remove("wrong-enter");
-    dialog.classList.add("hide-dialog");
+    dialog.classList.add("hide");
     hintBtn.textContent = "Get a hint";
     errorNumber = 0;
   }
   if (event.key === "Enter" && dialog.style.display !== "none") {
     dialog.classList.add("wrong-enter");
     errorNumber++;
-    root.style.setProperty("--sizing", `${errorNumber * 10}` + "px");
-    console.log(errorNumber);
+    root.style.setProperty("--sizing", `${errorNumber * 20}` + "px");
   }
 });
 
@@ -71,13 +71,10 @@ input.addEventListener("keyup", () => {
     input.value = "";
     dialog.classList.remove("dialog-style");
     dialog.classList.remove("wrong-enter");
-    dialog.classList.add("hide-dialog");
+    dialog.classList.add("hide");
     hintBtn.textContent = "Get a hint";
     errorNumber = 0;
   }
-  // else {
-  //   input.classList.remove("good-answer");
-  // }
 });
 
 //add a hint
@@ -92,6 +89,8 @@ hintBtn.addEventListener("click", () => {
     for (let i = 1; i < goodAnswer.length - 1; i++) {
       if (answer[i] === goodAnswer[i]) {
         hint += answer[i];
+      } else {
+        break;
       }
     }
     if (hint.toLocaleLowerCase() === goodAnswer.slice(0, -1)) {
