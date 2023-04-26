@@ -36,10 +36,11 @@ Hints give you help by simplifing the process. A letter from the element is reve
 - [x] Add a number on hints used tracker
 - [x] When element guessed, display summary on hover
 - [x] Block the user from clicking on a other element when guessing
-- [ ] Randomly select an element button
-- [ ] Update reset to soft
 - [ ] Add a close dialog button
+- [ ] Add a "click on an element" reminder if user doesn't do anything
+- [ ] Update reset to soft
 - [ ] Add explore mode (ie add class good-answer to all elements)
+- [ ] Calculate ratio between hints and guesses // wrong tries vs good tries
 
 ### Data
 
