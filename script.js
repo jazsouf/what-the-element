@@ -26,10 +26,10 @@ let scoreCount = document.getElementById("score");
 let input = document.getElementById("input");
 
 //start game
-startBtn.addEventListener("click", showTable);
+startBtn.addEventListener("click", hideMenu);
 
 //reset game without start-menu showing (https://jsfiddle.net/barmar/5sL3hd74/)
-function showTable() {
+function hideMenu() {
   startMenu.style.display = "none";
 }
 
@@ -37,7 +37,7 @@ window.onload = function () {
   let reloading = sessionStorage.getItem("reloading");
   if (reloading) {
     sessionStorage.removeItem("reloading");
-    showTable();
+    hideMenu();
   }
 };
 

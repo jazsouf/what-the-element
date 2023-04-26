@@ -47,11 +47,11 @@ body {
 }
 
 .intro {
-  font-size: 2.5vw;
+  font-size: 2vw;
 }
 
 .description {
-  font-size: 2.5vw;
+  font-size: 2vw;
 }
 
 .title,
@@ -59,17 +59,17 @@ body {
 .intro {
   display: grid;
   place-content: center;
-  padding: 0.7vw;
+  padding: 1vw;
+  text-transform: uppercase;
 }
 
 #table {
-  /* width: 90%; */
   max-width: 100%;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(18, auto);
   gap: 0.2vw;
-  padding: 2vh 0;
+  padding: 1.7vh 0;
 }
 
 .cell-2 {
@@ -101,7 +101,9 @@ body {
 }
 
 .elm-hover:hover,
-.elm-hover:focus {
+.elm-hover:focus,
+#hint-btn:hover,
+#hint-btn:focus {
   background-color: #dc143c;
   cursor: pointer;
 }
@@ -117,13 +119,14 @@ body {
 }
 
 .fake-element .name {
-  font-size: 1.4vw;
+  font-size: 1.2vw;
+  text-transform: uppercase;
 }
 .fake-element .symbol {
   font-size: 2.5vw;
 }
 .fake-element .number {
-  font-size: 1.4vw;
+  font-size: 1.5vw;
 }
 
 .element .name {
@@ -181,9 +184,10 @@ body {
 }
 
 #input {
-  width: 25ch;
-  height: 2vw;
+  width: 30ch;
+  padding: 1vh 0;
   text-align: center;
+  text-transform: uppercase;
 }
 
 #hint-btn {
@@ -195,6 +199,7 @@ body {
   background-color: #192e2e;
   color: #dee6ed;
   cursor: pointer;
+  text-transform: uppercase;
 }
 
 .good-answer {
@@ -217,9 +222,24 @@ body {
   gap: 0.2em;
 }
 
+#total {
+  border: solid 1px white;
+}
+
 #reset-btn {
   padding: 0.5em 1.5em;
   text-align: center;
+}
+
+footer {
+  color: #dee6ed;
+  font-size: 0.5rem;
+  position: fixed;
+  inset: auto 1px 1px;
+}
+
+footer a {
+  color: #65961c;
 }
 
 @keyframes flash {
