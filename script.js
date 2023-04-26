@@ -66,6 +66,7 @@ document.querySelectorAll(".element").forEach((element) => {
   }
   //show summary
   function showSummary() {
+    elementSummary.classList.remove("hide");
     elementSummary.textContent = "";
     elementSummary.textContent = element.getAttribute("summary");
   }
@@ -80,25 +81,34 @@ document.querySelectorAll(".element").forEach((element) => {
 
   //show Dialog on focus
   element.addEventListener("focus", () => {
-    element.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" && !element.classList.contains("good-answer")) {
-        showDialog();
-        table.classList.add("block-background");
-        errorNumber = -1;
-      }
-    });
+    if (!element.classList.contains("good-answer")) {
+      element.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+          table.classList.add("block-background");
+          showDialog();
+          errorNumber = -1;
+        }
+      });
+    } else {
+      showSummary();
+    }
   });
 
   //show summary on hover
   element.addEventListener("mouseover", () => {
     if (element.classList.contains("good-answer")) {
       showSummary();
-      console.log(elementSummary);
     }
   });
-  //hide summary
+  //hide summary on mouse leaving
   element.addEventListener("mouseleave", () => {
     elementSummary.textContent = "";
+    elementSummary.classList.add("hide");
+  });
+  //hide summary on blur
+  element.addEventListener("blur", () => {
+    elementSummary.textContent = "";
+    elementSummary.classList.add("hide");
   });
 });
 

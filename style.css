@@ -3,7 +3,8 @@
   --progress: 0%;
 }
 
-.element > *::selection {
+.element > *::selection,
+#scoresheet *::selection {
   color: none;
   background-color: transparent;
 }
@@ -106,12 +107,15 @@ body {
 #hint-btn:hover,
 #hint-btn:focus,
 .link:hover,
-.link:focus {
+.link:focus,
+#reset-bnt:hover,
+#reset-btn:focus {
   background-color: #dc143c;
   cursor: pointer;
 }
 
-.fake-element:hover {
+.fake-element:hover,
+.fake-element:focus {
   animation: flash 0.1s ease-in 1 backwards;
 }
 
@@ -215,17 +219,17 @@ body {
 #scoresheet {
   text-align: center;
   margin: 0 auto;
-
   padding: 0.2vw;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 5vw;
-  font-weight: 800;
+  font-weight: 700;
   display: flex;
-  border: solid 1px white;
+  border: solid 1px #dee6ed;
   align-items: center;
   justify-content: center;
   gap: 0.2em;
+  cursor: default;
 }
 
 .subcontainer {
@@ -245,6 +249,9 @@ body {
   max-width: 30vw;
   text-align: center;
   text-transform: uppercase;
+  background-color: #dee6ed;
+  border: none;
+  cursor: pointer;
 }
 
 footer {
@@ -267,6 +274,26 @@ footer {
   text-decoration: none;
 }
 
+#element-summary {
+  position: absolute;
+  left: 15vw;
+  top: 12.5vw;
+  width: 50vw;
+  max-height: 10vw;
+  color: #dee6ed;
+  font-weight: 100;
+  font-size: 1.2vw;
+  line-height: 1.6;
+  background-color: #dc143c10;
+  border: #65961c30 solid 1px;
+  padding: 0 5px;
+  text-indent: 0.5ch;
+}
+
+.hide {
+  display: none;
+}
+
 @keyframes flash {
   from {
     opacity: 0;
@@ -274,22 +301,4 @@ footer {
   to {
     opacity: 1;
   }
-}
-
-#element-summary {
-  position: absolute;
-  left: 15vw;
-  top: 6vw;
-  width: 50vw;
-  max-height: 10vw;
-  color: #dee6ed;
-  font-weight: 300;
-  font-size: 1.2vw;
-  line-height: 1.6;
-  background-color: #dc143c50;
-  padding: 0 5px;
-}
-
-.hide {
-  display: none;
 }
