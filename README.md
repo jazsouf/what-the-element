@@ -33,13 +33,13 @@ Hints give you help by simplifing the process. A letter from the element is reve
 - [x] Add a footer
 - [x] Add a progress bar
 - [x] Add tab navigation on elements
+- [x] Add a number on hints used tracker
+- [x] When element guessed, display summary on hover
+- [x] Block the user from clicking on a other element when guessing
 - [ ] Randomly select an element button
-- [ ] Block the user from clicking on a other element when guessing
 - [ ] Update reset to soft
 - [ ] Add a close dialog button
-- [ ] Add explore mode
-- [ ] When element guessed, display summary on hover
-- [ ] Add a number on hints used tracker
+- [ ] Add explore mode (ie add class good-answer to all elements)
 
 ### Data
 

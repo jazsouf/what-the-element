@@ -9,7 +9,7 @@ elements.forEach((element, i) => {
   let symbol = cell.children[1];
   let name = cell.children[2];
   cell.setAttribute("tabindex", "0");
-
+  cell.setAttribute("summary", `${element.summary}`);
   number.innerText = element.number;
   symbol.innerText = element.symbol;
   name.innerText = element.name;
@@ -25,6 +25,8 @@ let startMenu = document.getElementById("start-menu");
 let startBtn = document.getElementById("start-btn");
 let scoreCount = document.getElementById("score");
 let input = document.getElementById("input");
+let hintCounter = document.getElementById("hint-counter");
+let elementSummary = document.getElementById("element-summary");
 let errorNumber = 0;
 let hintCount = 0;
 
@@ -50,8 +52,8 @@ function reloadPage() {
 }
 resetBtn.addEventListener("click", reloadPage);
 
-//show dialog
 document.querySelectorAll(".element").forEach((element) => {
+  //show Dialog
   function showDialog() {
     errorNumber = 0;
     const placeholder = dialog.children[0];
@@ -62,24 +64,50 @@ document.querySelectorAll(".element").forEach((element) => {
     input.focus();
     input.select();
   }
-  //show on click
-  element.addEventListener("click", showDialog);
+  //show summary
+  function showSummary() {
+    elementSummary.textContent = "";
+    elementSummary.textContent = element.getAttribute("summary");
+  }
 
-  //show on select
+  //show Dialog on click
+  element.addEventListener("click", () => {
+    if (!element.classList.contains("good-answer")) {
+      showDialog();
+      table.classList.add("block-background");
+    }
+  });
+
+  //show Dialog on focus
   element.addEventListener("focus", () => {
     element.addEventListener("keydown", (event) => {
       if (event.key === "Enter" && !element.classList.contains("good-answer")) {
         showDialog();
+        table.classList.add("block-background");
         errorNumber = -1;
       }
     });
   });
+
+  //show summary on hover
+  element.addEventListener("mouseover", () => {
+    if (element.classList.contains("good-answer")) {
+      showSummary();
+      console.log(elementSummary);
+    }
+  });
+  //hide summary
+  element.addEventListener("mouseleave", () => {
+    elementSummary.textContent = "";
+  });
 });
-//keydow events
+
+//various keydown events
 document.addEventListener("keydown", (event) => {
   //close input field
   if (event.key === "Escape") {
     input.value = "";
+    table.classList.remove("block-background");
     dialog.classList.remove("dialog-style");
     dialog.classList.remove("wrong-enter");
     dialog.classList.add("hide");
@@ -92,6 +120,11 @@ document.addEventListener("keydown", (event) => {
     dialog.classList.add("wrong-enter");
     errorNumber++;
     root.style.setProperty("--sizing", `${errorNumber * 10}` + "px");
+  }
+
+  //start game by pressing enter
+  if (event.key === "Enter" && startMenu.style.display != "none") {
+    hideMenu();
   }
 });
 
@@ -114,6 +147,7 @@ input.addEventListener("keyup", () => {
       `${(Number(scoreCount.innerText) / 118) * 100}` + "%"
     );
     input.value = "";
+    table.classList.remove("block-background");
     dialog.classList.remove("dialog-style");
     dialog.classList.remove("wrong-enter");
     dialog.classList.add("hide");
@@ -142,6 +176,7 @@ hintBtn.addEventListener("click", () => {
     } else {
       hint += goodAnswer[hint.length];
       hintCount++;
+      hintCounter.innerText++;
     }
     input.value = hint;
   }
