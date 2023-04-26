@@ -16,7 +16,7 @@ You can skip an element and you can also choose which part of the periodic table
 
 - [x] Display the periodic table of elements with their symbol, but hide their name
 - [x] Add a start menu
-- [ ] Randomly select an element mode
+- [ ] Randomly select an element button
 - [x] Display the element in the middle of the screen
 - [x] Add an input field for the user to guess the name of the element
 - [x] Assess the answer given by the user:
@@ -29,7 +29,9 @@ You can skip an element and you can also choose which part of the periodic table
 - [x] Add interaction with the "Enter" key
 - [ ] Add a footer
 - [ ] Block the user from clicking on a other element
-- [ ] Start button animation
+- [x] Start button animation
+- [ ] Convert input to uppercase
+- [ ] Add tab/key navigation
 
 ### Data
 

@@ -88,7 +88,7 @@ body {
 
 .element,
 .fake-element {
-  width: 4.5vw;
+  width: 5vw;
   aspect-ratio: 1;
   border: solid 1px #dee6ed;
   padding: 0.2rem;
@@ -127,12 +127,13 @@ body {
 }
 
 .element .name {
-  font-size: 0.6vw;
+  font-size: 0.55vw;
   visibility: hidden;
 }
 
-.show-name {
+.element .show-name {
   visibility: visible;
+  text-transform: uppercase;
 }
 
 .element .symbol {
