@@ -31,12 +31,15 @@ Hints give you help by simplifing the process. A letter from the element is reve
 - [x] Start button animations
 - [x] Convert input to uppercase
 - [x] Add a footer
+- [x] Add a progress bar
+- [x] Add tab navigation on elements
 - [ ] Randomly select an element button
 - [ ] Block the user from clicking on a other element when guessing
 - [ ] Update reset to soft
-- [ ] Add tab/key navigation
-- [ ] Add a progress bar
+- [ ] Add a close dialog button
 - [ ] Add explore mode
+- [ ] When element guessed, display summary on hover
+- [ ] Add a number on hints used tracker
 
 ### Data
 

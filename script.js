@@ -8,6 +8,7 @@ elements.forEach((element, i) => {
   let number = cell.children[0];
   let symbol = cell.children[1];
   let name = cell.children[2];
+  cell.setAttribute("tabindex", "0");
 
   number.innerText = element.number;
   symbol.innerText = element.symbol;
@@ -24,6 +25,8 @@ let startMenu = document.getElementById("start-menu");
 let startBtn = document.getElementById("start-btn");
 let scoreCount = document.getElementById("score");
 let input = document.getElementById("input");
+let errorNumber = 0;
+let hintCount = 0;
 
 //start game
 startBtn.addEventListener("click", hideMenu);
@@ -47,23 +50,34 @@ function reloadPage() {
 }
 resetBtn.addEventListener("click", reloadPage);
 
-//show input field
+//show dialog
 document.querySelectorAll(".element").forEach((element) => {
-  element.addEventListener("click", () => {
+  function showDialog() {
+    errorNumber = 0;
     const placeholder = dialog.children[0];
     let clonedElement = element.cloneNode(true);
-
     placeholder.replaceWith(clonedElement);
-
     dialog.classList.add("dialog-style");
+    dialog.classList.remove("hide");
     input.focus();
     input.select();
+  }
+  //show on click
+  element.addEventListener("click", showDialog);
+
+  //show on select
+  element.addEventListener("focus", () => {
+    element.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" && !element.classList.contains("good-answer")) {
+        showDialog();
+        errorNumber = -1;
+      }
+    });
   });
 });
-
-//close input field + enter wrong input
-let errorNumber = 0;
+//keydow events
 document.addEventListener("keydown", (event) => {
+  //close input field
   if (event.key === "Escape") {
     input.value = "";
     dialog.classList.remove("dialog-style");
@@ -72,10 +86,12 @@ document.addEventListener("keydown", (event) => {
     hintBtn.textContent = "Get a hint";
     errorNumber = 0;
   }
-  if (event.key === "Enter" && dialog.style.display !== "none") {
+
+  //enter wrong answer
+  if (event.key === "Enter" && !dialog.classList.contains("hide")) {
     dialog.classList.add("wrong-enter");
     errorNumber++;
-    root.style.setProperty("--sizing", `${errorNumber * 20}` + "px");
+    root.style.setProperty("--sizing", `${errorNumber * 10}` + "px");
   }
 });
 
@@ -93,6 +109,10 @@ input.addEventListener("keyup", () => {
     element.classList.add("good-answer");
     element.children[2].classList.add("show-name");
     scoreCount.innerText++;
+    root.style.setProperty(
+      "--progress",
+      `${(Number(scoreCount.innerText) / 118) * 100}` + "%"
+    );
     input.value = "";
     dialog.classList.remove("dialog-style");
     dialog.classList.remove("wrong-enter");
@@ -106,7 +126,6 @@ input.addEventListener("keyup", () => {
 hintBtn.addEventListener("click", () => {
   let selectedElement = dialog.children[0];
   let goodAnswer = selectedElement.children[2].textContent.toLocaleLowerCase();
-
   let answer = input.value.toLocaleLowerCase();
   let hint = goodAnswer[0].toLocaleUpperCase();
 
@@ -122,6 +141,7 @@ hintBtn.addEventListener("click", () => {
       hintBtn.textContent = "Come on, guess the last letter!";
     } else {
       hint += goodAnswer[hint.length];
+      hintCount++;
     }
     input.value = hint;
   }

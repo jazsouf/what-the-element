@@ -620,11 +620,14 @@
     </div>
     <div id="scoresheet" class="">
       <div id="total"><span id="score">0</span> / 118</div>
-      <button id="reset-btn">Reset score</button>
+      <div class="subcontainer">
+        <div id="hints">Hints used: <span id="hints-count">0</span></div>
+        <button id="reset-btn">Reset score</button>
+      </div>
     </div>
     <div id="dialog" class="hide">
       <div>placeholder</div>
-      <div id="form" method="" action="">
+      <div id="form">
         <input
           id="input"
           type="text"
@@ -636,7 +639,10 @@
     </div>
     <footer>
       made by
-      <a href="https://github.com/jazsouf/what-the-element" target="_blank"
+      <a
+        class="link"
+        href="https://github.com/jazsouf/what-the-element"
+        target="_blank"
         >jazsouf</a
       >
     </footer>
