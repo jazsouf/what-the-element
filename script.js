@@ -188,6 +188,7 @@ document.querySelectorAll(".element").forEach((element) => {
   //reaveal all info
   revealBtn.addEventListener("click", () => {
     revealInfo(element);
+    scoreCount.innerText = 118;
     revealBtn.classList.add("block-background");
   });
 });
@@ -271,8 +272,6 @@ input.addEventListener("keyup", () => {
 
 //ask for a hint event
 hintBtn.addEventListener("click", () => {
-  totalHintClicks++;
-  console.log(totalHintClicks);
   let selectedElement = dialog.children[0];
   let goodAnswer = selectedElement.children[2].textContent.toLocaleLowerCase();
   let answer = input.value.toLocaleLowerCase();
