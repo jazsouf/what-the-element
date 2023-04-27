@@ -1,23 +1,24 @@
 //import data
 import { elements } from "./data/elements.js";
-import { nomFR } from "./data/nomFr.js";
+import { nomFR } from "./data/nomFR.js";
 
 //define global variables
 const root = document.querySelector(":root");
 const table = document.getElementById("table");
-let dialog = document.getElementById("dialog");
-let hintBtn = document.getElementById("hint-btn");
-let resetBtn = document.getElementById("reset-btn");
-let startMenu = document.getElementById("start-menu");
-let startBtn = document.getElementById("start-btn");
-let closeBtn = document.getElementById("close-dialog");
-let langModeBtn = document.getElementById("lang-mode");
-let scoreCount = document.getElementById("score");
-let input = document.getElementById("input");
-let hintCounter = document.getElementById("hint-counter");
+const dialog = document.getElementById("dialog");
+const hintBtn = document.getElementById("hint-btn");
+const resetBtn = document.getElementById("reset-btn");
+const startMenu = document.getElementById("start-menu");
+const startBtn = document.getElementById("start-btn");
+const closeBtn = document.getElementById("close-dialog");
+const revealBtn = document.getElementById("reveal-btn");
+const langModeBtn = document.getElementById("lang-mode");
+const scoreCount = document.getElementById("score");
+const input = document.getElementById("input");
+const hintCounter = document.getElementById("hint-counter");
+const hintText = document.getElementById("hint-text");
+const elementSummary = document.getElementById("element-summary");
 let hintCount = 0;
-let hintText = document.getElementById("hint-text");
-let elementSummary = document.getElementById("element-summary");
 let errorNumber = 0;
 
 //assign data to cells
@@ -53,9 +54,12 @@ function englishMode() {
     hintBtn.innerText = "Get hint";
     hintText.innerText = "Hints used: ";
     resetBtn.innerText = "Reset table";
+    revealBtn.innerText = "Reveal All";
     input.placeholder = "Guess the name";
+
     langModeBtn.classList.add("french");
     langModeBtn.classList.remove("english");
+
     startBtn.focus();
   });
 }
@@ -75,6 +79,7 @@ function frenchMode() {
     hintBtn.innerText = "Obtenir un indice";
     hintText.innerText = "Indices: ";
     resetBtn.innerText = "réinitialiser tableau";
+    revealBtn.innerText = "tout dévoiler";
     input.placeholder = "Devine le nom";
 
     langModeBtn.classList.add("english");
@@ -125,7 +130,7 @@ document.querySelectorAll(".element").forEach((element) => {
   //show Dialog
   function showDialog() {
     errorNumber = 0;
-    const placeholder = dialog.children[0];
+    let placeholder = dialog.children[0];
     let clonedElement = element.cloneNode(true);
     placeholder.replaceWith(clonedElement);
     dialog.classList.add("dialog-style");
@@ -180,7 +185,23 @@ document.querySelectorAll(".element").forEach((element) => {
     elementSummary.textContent = "";
     elementSummary.classList.remove("good-answer");
   });
+
+  //reaveal all info
+  revealBtn.addEventListener("click", () => {
+    revealInfo(element);
+    revealBtn.classList.add("block-background");
+  });
 });
+function revealInfo(element) {
+  element.classList.remove("elm-hover");
+  element.classList.add("good-answer");
+  element.children[2].classList.add("show-name");
+  scoreCount.innerText++;
+  root.style.setProperty(
+    "--progress",
+    `${(Number(scoreCount.innerText) / 118) * 100}` + "%"
+  );
+}
 
 //various keydown events
 document.addEventListener("keydown", (event) => {
@@ -212,14 +233,7 @@ input.addEventListener("keyup", () => {
   let answer = input.value;
   if (answer.toLocaleLowerCase() === goodAnswer.toLocaleLowerCase()) {
     let element = table.querySelector(`.${selectedElementClass}`);
-    element.classList.remove("elm-hover");
-    element.classList.add("good-answer");
-    element.children[2].classList.add("show-name");
-    scoreCount.innerText++;
-    root.style.setProperty(
-      "--progress",
-      `${(Number(scoreCount.innerText) / 118) * 100}` + "%"
-    );
+    revealInfo(element);
     closeDialog();
   }
 });
@@ -252,7 +266,6 @@ hintBtn.addEventListener("click", () => {
 });
 
 //close dialog
-
 function closeDialog() {
   input.value = "";
   table.classList.remove("block-background");

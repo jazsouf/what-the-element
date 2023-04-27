@@ -39,8 +39,8 @@ Hints give you help by simplifing the process. A letter from the element is reve
 - [x] Add french mode
 - [x] Adapt to small screens
 - [x] Add a close dialog button
+- [x] Add explore mode (ie add class good-answer to all elements)
 - [ ] Add a "click on an element" reminder if user doesn't do anything
-- [ ] Add explore mode (ie add class good-answer to all elements)
 - [ ] Calculate ratio between hints and guesses // wrong tries vs good tries
 - [ ] Add finish screen with hint ratio
 
@@ -48,3 +48,4 @@ Hints give you help by simplifing the process. A letter from the element is reve
 
 Data from:
 https://github.com/Bowserinator/Periodic-Table-JSON
+http://kemi.fr/base-de-donnees

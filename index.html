@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./style.css" />
     <script type="module" src="./script.js"></script>
     <script type="module" src="./data/elements.js"></script>
-    <script type="module" src="./data/nomFr.js"></script>
+    <script type="module" src="./data/nomFR.js"></script>
   </head>
   <body>
     <div id="start-menu">
@@ -27,7 +27,14 @@
       </button>
       <button id="lang-mode" class="french">Jouer en Français</button>
     </div>
-    <div id="scoresheet" class="">
+    <div id="scoresheet">
+      <div class="subcontainer">
+        <div id="ratio">
+          <span id="ratio-text">Guess ratio: </span
+          ><span id="ratio-percent"></span>%
+        </div>
+        <button id="reveal-btn" tabindex="-1">reveal all</button>
+      </div>
       <div id="total"><span id="score">0</span> / 118</div>
       <div class="subcontainer">
         <div id="hints">
