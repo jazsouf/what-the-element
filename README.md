@@ -36,14 +36,13 @@ Hints give you help by simplifing the process. A letter from the element is reve
 - [x] Add a number on hints used tracker
 - [x] When element guessed, display summary on hover
 - [x] Block the user from clicking on a other element when guessing
-- [ ] Add a close dialog button
+- [x] Add french mode
+- [x] Adapt to small screens
+- [x] Add a close dialog button
 - [ ] Add a "click on an element" reminder if user doesn't do anything
-- [ ] Update reset to soft
 - [ ] Add explore mode (ie add class good-answer to all elements)
 - [ ] Calculate ratio between hints and guesses // wrong tries vs good tries
-- [x] Adapt to small screens
 - [ ] Add finish screen with hint ratio
-- [ ] Add french mode
 
 ### Data
 

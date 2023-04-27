@@ -10,6 +10,7 @@ let hintBtn = document.getElementById("hint-btn");
 let resetBtn = document.getElementById("reset-btn");
 let startMenu = document.getElementById("start-menu");
 let startBtn = document.getElementById("start-btn");
+let closeBtn = document.getElementById("close-dialog");
 let langModeBtn = document.getElementById("lang-mode");
 let scoreCount = document.getElementById("score");
 let input = document.getElementById("input");
@@ -52,7 +53,7 @@ function englishMode() {
     hintBtn.innerText = "Get hint";
     hintText.innerText = "Hints used: ";
     resetBtn.innerText = "Reset table";
-
+    input.placeholder = "Guess the name";
     langModeBtn.classList.add("french");
     langModeBtn.classList.remove("english");
     startBtn.focus();
@@ -74,6 +75,7 @@ function frenchMode() {
     hintBtn.innerText = "Obtenir un indice";
     hintText.innerText = "Indices: ";
     resetBtn.innerText = "réinitialiser tableau";
+    input.placeholder = "Devine le nom";
 
     langModeBtn.classList.add("english");
     langModeBtn.classList.remove("french");
@@ -184,14 +186,7 @@ document.querySelectorAll(".element").forEach((element) => {
 document.addEventListener("keydown", (event) => {
   //close input field
   if (event.key === "Escape") {
-    input.value = "";
-    table.classList.remove("block-background");
-    dialog.classList.remove("dialog-style");
-    dialog.classList.remove("wrong-enter");
-    dialog.classList.add("hide");
-    hintBtn.textContent = "Get a hint";
-    errorNumber = 0;
-    toggleTabNavigation(0);
+    closeDialog();
   }
 
   //enter wrong answer
@@ -225,14 +220,7 @@ input.addEventListener("keyup", () => {
       "--progress",
       `${(Number(scoreCount.innerText) / 118) * 100}` + "%"
     );
-    input.value = "";
-    table.classList.remove("block-background");
-    toggleTabNavigation(0);
-    dialog.classList.remove("dialog-style");
-    dialog.classList.remove("wrong-enter");
-    dialog.classList.add("hide");
-    hintBtn.textContent = "Get a hint";
-    errorNumber = 0;
+    closeDialog();
   }
 });
 
@@ -262,3 +250,18 @@ hintBtn.addEventListener("click", () => {
   }
   input.focus();
 });
+
+//close dialog
+
+function closeDialog() {
+  input.value = "";
+  table.classList.remove("block-background");
+  dialog.classList.remove("dialog-style");
+  dialog.classList.remove("wrong-enter");
+  dialog.classList.add("hide");
+  hintBtn.textContent = "Get a hint";
+  errorNumber = 0;
+  toggleTabNavigation(0);
+}
+
+closeBtn.addEventListener("click", closeDialog);

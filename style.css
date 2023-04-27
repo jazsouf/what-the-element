@@ -200,6 +200,18 @@ body {
   font-size: 0.8vw;
 }
 
+#close-dialog {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: none;
+  border: none;
+  color: #dee6ed;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 10px;
+}
+
 .dialog-style {
   position: fixed;
   top: 50%;
