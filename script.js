@@ -1,19 +1,6 @@
 //import data
-import { elements } from "./elements.js";
-
-//assign data to cells
-elements.forEach((element, i) => {
-  let cell = document.querySelector(`.cell-${i + 1}`);
-
-  let number = cell.children[0];
-  let symbol = cell.children[1];
-  let name = cell.children[2];
-  cell.setAttribute("tabindex", "0");
-  cell.setAttribute("summary", `${element.summary}`);
-  number.innerText = element.number;
-  symbol.innerText = element.symbol;
-  name.innerText = element.name;
-});
+import { elements } from "./data/elements.js";
+import { nomFR } from "./data/nomFr.js";
 
 //define global variables
 const root = document.querySelector(":root");
@@ -23,21 +10,102 @@ let hintBtn = document.getElementById("hint-btn");
 let resetBtn = document.getElementById("reset-btn");
 let startMenu = document.getElementById("start-menu");
 let startBtn = document.getElementById("start-btn");
+let langModeBtn = document.getElementById("lang-mode");
 let scoreCount = document.getElementById("score");
 let input = document.getElementById("input");
 let hintCounter = document.getElementById("hint-counter");
+let hintCount = 0;
+let hintText = document.getElementById("hint-text");
 let elementSummary = document.getElementById("element-summary");
 let errorNumber = 0;
-let hintCount = 0;
+
+//assign data to cells
+function fillCells() {
+  elements.forEach((element, i) => {
+    let cell = document.querySelector(`.cell-${i + 1}`);
+
+    let number = cell.children[0];
+    let symbol = cell.children[1];
+    let name = cell.children[2];
+
+    cell.setAttribute("summary", `${element.summary}`);
+    number.innerText = element.number;
+    symbol.innerText = element.symbol;
+    name.innerText = element.name;
+  });
+}
+fillCells();
+
+//language mode
+function englishMode() {
+  elements.forEach((element, i) => {
+    let cell = document.querySelector(`.cell-${i + 1}`);
+    let name = cell.children[2];
+
+    name.innerText = element.name;
+    startMenu.children[0].innerText = "What The Element?!";
+    startMenu.children[1].innerText =
+      "Welcome! Do you want to learn about the elements in the universe? Get ready...";
+    startMenu.children[2].innerText =
+      "Select an element and guess its name. Try your best ;)";
+    langModeBtn.innerText = "Jouer en Français";
+    hintBtn.innerText = "Get hint";
+    hintText.innerText = "Hints used: ";
+    resetBtn.innerText = "Reset table";
+
+    langModeBtn.classList.add("french");
+    langModeBtn.classList.remove("english");
+    startBtn.focus();
+  });
+}
+
+function frenchMode() {
+  nomFR.forEach((nom, i) => {
+    let cell = document.querySelector(`.cell-${i + 1}`);
+    let name = cell.children[2];
+    name.innerText = nom;
+
+    startMenu.children[0].innerText = "Mais Quel élément?!";
+    startMenu.children[1].innerText =
+      "Bienvenue ! Tu veux en savoir plus sur les éléments de l'univers ? Prépare-toi...";
+    startMenu.children[2].innerText =
+      "Sélectionne un élément et devine son nom. Fais de ton mieux ;)";
+    langModeBtn.innerText = "Switch to English";
+    hintBtn.innerText = "Obtenir un indice";
+    hintText.innerText = "Indices: ";
+    resetBtn.innerText = "réinitialiser tableau";
+
+    langModeBtn.classList.add("english");
+    langModeBtn.classList.remove("french");
+    startBtn.focus();
+  });
+}
+
+langModeBtn.addEventListener("click", () => {
+  console.log("test");
+  if (langModeBtn.classList.contains("french")) {
+    frenchMode();
+  } else if (langModeBtn.classList.contains("english")) {
+    englishMode();
+  }
+});
 
 //start game
+function toggleTabNavigation(n) {
+  elements.forEach((element, i) => {
+    let cell = document.querySelector(`.cell-${i + 1}`);
+    cell.setAttribute("tabindex", `${n}`);
+  });
+}
+
+function hideMenu() {
+  startMenu.style.display = "none";
+  table.classList.remove("block-background");
+  toggleTabNavigation(0);
+}
 startBtn.addEventListener("click", hideMenu);
 
 //reset game without start-menu showing (https://jsfiddle.net/barmar/5sL3hd74/)
-function hideMenu() {
-  startMenu.style.display = "none";
-}
-
 window.onload = function () {
   let reloading = sessionStorage.getItem("reloading");
   if (reloading) {
@@ -45,7 +113,6 @@ window.onload = function () {
     hideMenu();
   }
 };
-
 function reloadPage() {
   sessionStorage.setItem("reloading", "true");
   document.location.reload();
@@ -63,6 +130,7 @@ document.querySelectorAll(".element").forEach((element) => {
     dialog.classList.remove("hide");
     input.focus();
     input.select();
+    toggleTabNavigation(-1);
   }
   //show summary
   function showSummary() {
@@ -123,6 +191,7 @@ document.addEventListener("keydown", (event) => {
     dialog.classList.add("hide");
     hintBtn.textContent = "Get a hint";
     errorNumber = 0;
+    toggleTabNavigation(0);
   }
 
   //enter wrong answer
@@ -158,6 +227,7 @@ input.addEventListener("keyup", () => {
     );
     input.value = "";
     table.classList.remove("block-background");
+    toggleTabNavigation(0);
     dialog.classList.remove("dialog-style");
     dialog.classList.remove("wrong-enter");
     dialog.classList.add("hide");

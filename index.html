@@ -17,27 +17,32 @@
         ready...
       </p>
       <p class="description">
-        Select an element and guess its name in English. Try your best ;)
+        Select an element and guess its name. Try your best ;)
       </p>
       <button id="start-btn" class="elm-hover fake-element">
         <div class="number">420</div>
         <div class="symbol">START</div>
         <div class="name">guess my name</div>
       </button>
+      <button id="lang-mode" class="french">Jouer en Français</button>
     </div>
     <div id="scoresheet" class="">
       <div id="total"><span id="score">0</span> / 118</div>
       <div class="subcontainer">
-        <div id="hints">Hints used: <span id="hint-counter">0</span></div>
+        <div id="hints">
+          <span id="hint-text">Hints used: </span
+          ><span id="hint-counter">0</span>
+        </div>
         <button id="reset-btn" tabindex="-1">Reset table</button>
       </div>
     </div>
-    <div id="table">
+    <div id="table" class="block-background">
       <div class="elm-hover element cell-1">
         <div class="number"></div>
         <div class="symbol"></div>
         <div class="name"></div>
       </div>
+      <div class="random-info"></div>
       <div class="elm-hover element cell-2">
         <div class="number"></div>
         <div class="symbol"></div>

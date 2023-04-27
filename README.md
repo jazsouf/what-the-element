@@ -41,8 +41,9 @@ Hints give you help by simplifing the process. A letter from the element is reve
 - [ ] Update reset to soft
 - [ ] Add explore mode (ie add class good-answer to all elements)
 - [ ] Calculate ratio between hints and guesses // wrong tries vs good tries
-- [ ] Adapt to small screens
+- [x] Adapt to small screens
 - [ ] Add finish screen with hint ratio
+- [ ] Add french mode
 
 ### Data
 
