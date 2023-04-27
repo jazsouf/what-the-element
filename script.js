@@ -19,11 +19,11 @@ const hintCounter = document.getElementById("hint-counter");
 const hintText = document.getElementById("hint-text");
 const ratioText = document.getElementById("ratio-text");
 const ratioPercent = document.getElementById("ratio-percent");
-
 const elementSummary = document.getElementById("element-summary");
 let hintCount = 0;
 let errorNumber = 0;
 let letters = 1;
+let french = false;
 
 //assign data to cells
 fillCells();
@@ -46,6 +46,7 @@ function fillCells() {
 
 ////functions
 function englishMode() {
+  french = false;
   elements.forEach((element, i) => {
     let cell = document.querySelector(`.cell-${i + 1}`);
     let name = cell.children[2];
@@ -73,6 +74,7 @@ function englishMode() {
 }
 
 function frenchMode() {
+  french = true;
   nomFR.forEach((nom, i) => {
     let cell = document.querySelector(`.cell-${i + 1}`);
     let name = cell.children[2];
@@ -212,6 +214,9 @@ function closeDialog() {
   dialog.classList.remove("wrong-enter");
   dialog.classList.add("hide");
   hintBtn.textContent = "Get a hint";
+  if (french) {
+    hintBtn.textContent = "Obtenir un indice";
+  }
   errorNumber = 0;
   toggleTabNavigation(0);
   ratioPercent.innerText = ((1 - hintCount / letters) * 100).toFixed(0);
@@ -286,7 +291,11 @@ hintBtn.addEventListener("click", () => {
       }
     }
     if (hint.toLocaleLowerCase() === goodAnswer.slice(0, -1)) {
-      hintBtn.textContent = "Come on, guess the last letter!";
+      if (french) {
+        hintBtn.textContent = "Allez, tu peux trouver la dernière lettre !";
+      } else {
+        hintBtn.textContent = "Come on, guess the last letter!";
+      }
     } else {
       hint += goodAnswer[hint.length];
       hintCount++;
