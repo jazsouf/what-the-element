@@ -78,10 +78,10 @@ body {
   grid-column-start: -2;
 }
 
-.cell-5,
+/* .cell-5,
 .cell-13 {
   grid-column-start: 13;
-}
+} */
 
 .cell-58,
 .cell-90 {
@@ -187,19 +187,24 @@ body {
 }
 
 #input {
-  width: 30ch;
-  padding: 1vh 0;
+  max-width: 30ch;
   text-align: center;
   text-transform: uppercase;
+  font-size: 1.2vw;
+}
+
+#input::placeholder {
+  opacity: 0.3;
 }
 
 #hint-btn {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  font-weight: 100;
+  font-weight: 200;
+  font-size: 1vw;
   border: #dee6ed 1px solid;
-  padding: 0.4em 1em;
-  background-color: #192e2e;
+  padding: 0.2em 0.4em;
+  background-color: #dc143c;
   color: #dee6ed;
   cursor: pointer;
   text-transform: uppercase;
@@ -245,13 +250,16 @@ body {
 }
 
 #reset-btn {
-  padding: 0.5em 1.5em;
-  max-width: 30vw;
+  padding: 0.5em 0;
+  max-width: 18ch;
   text-align: center;
   text-transform: uppercase;
-  background-color: #dee6ed;
+  background-color: #dc143c;
+  color: #dee6ed;
   border: none;
   cursor: pointer;
+  font-size: 0.8vw;
+  font-weight: 100;
 }
 
 footer {
@@ -275,19 +283,16 @@ footer {
 }
 
 #element-summary {
-  position: absolute;
-  left: 15vw;
-  top: 12.5vw;
-  width: 50vw;
+  visibility: visible;
+  grid-column: span 10;
+  grid-row: span 2;
+  max-width: 51.8vw;
   max-height: 10vw;
   color: #dee6ed;
-  font-weight: 100;
+  font-weight: 300;
   font-size: 1.2vw;
   line-height: 1.6;
-  background-color: #dc143c10;
-  border: #65961c30 solid 1px;
-  padding: 0 5px;
-  text-indent: 0.5ch;
+  padding: 0 0.1rem;
 }
 
 .hide {

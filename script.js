@@ -66,7 +66,7 @@ document.querySelectorAll(".element").forEach((element) => {
   }
   //show summary
   function showSummary() {
-    elementSummary.classList.remove("hide");
+    elementSummary.classList.add("good-answer");
     elementSummary.textContent = "";
     elementSummary.textContent = element.getAttribute("summary");
   }
@@ -103,12 +103,12 @@ document.querySelectorAll(".element").forEach((element) => {
   //hide summary on mouse leaving
   element.addEventListener("mouseleave", () => {
     elementSummary.textContent = "";
-    elementSummary.classList.add("hide");
+    elementSummary.classList.remove("good-answer");
   });
   //hide summary on blur
   element.addEventListener("blur", () => {
     elementSummary.textContent = "";
-    elementSummary.classList.add("hide");
+    elementSummary.classList.remove("good-answer");
   });
 });
 
