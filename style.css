@@ -248,7 +248,7 @@ body {
 #input {
   max-width: 30ch;
   text-align: center;
-  text-transform: uppercase;
+  text-transform: capitalize;
   font-size: 1.2vw;
 }
 

@@ -42,8 +42,13 @@ Hints give you help by simplifing the process. A letter from the element is reve
 - [x] Add explore mode (ie add class good-answer to all elements)
 - [x] Calculate ratio between hints and guesses // wrong tries vs good tries
 - [ ] Add a "click on an element" reminder if user doesn't do anything
-- [ ] Add finish screen with hint ratio
-- [ ]
+- [ ] Add finish screen with hint ratio // like solitary
+- [ ] Add percent complete hover on bar
+- [ ] Fix bug on hint from random
+- [ ] Close input by click outside
+- [ ] Add legen with box, with "atomic number" "symbol" "name"
+- [ ] Style input field
+- [ ] If you used a hint, put put different color
 
 ### Data
 
