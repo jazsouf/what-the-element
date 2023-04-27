@@ -22,6 +22,7 @@ let hintCount = 0;
 let errorNumber = 0;
 
 //assign data to cells
+fillCells();
 function fillCells() {
   elements.forEach((element, i) => {
     let cell = document.querySelector(`.cell-${i + 1}`);
@@ -36,9 +37,10 @@ function fillCells() {
     name.innerText = element.name;
   });
 }
-fillCells();
 
 //language mode
+
+////functions
 function englishMode() {
   elements.forEach((element, i) => {
     let cell = document.querySelector(`.cell-${i + 1}`);
@@ -88,6 +90,7 @@ function frenchMode() {
   });
 }
 
+////event
 langModeBtn.addEventListener("click", () => {
   console.log("test");
   if (langModeBtn.classList.contains("french")) {
@@ -97,7 +100,16 @@ langModeBtn.addEventListener("click", () => {
   }
 });
 
-//start game
+//start game dynamic
+
+////disable the start menu function
+function hideMenu() {
+  startMenu.style.display = "none";
+  table.classList.remove("block-background");
+  toggleTabNavigation(0);
+}
+
+////toggle tab navigation for accessibility
 function toggleTabNavigation(n) {
   elements.forEach((element, i) => {
     let cell = document.querySelector(`.cell-${i + 1}`);
@@ -105,14 +117,10 @@ function toggleTabNavigation(n) {
   });
 }
 
-function hideMenu() {
-  startMenu.style.display = "none";
-  table.classList.remove("block-background");
-  toggleTabNavigation(0);
-}
+////event
 startBtn.addEventListener("click", hideMenu);
 
-//reset game without start-menu showing (https://jsfiddle.net/barmar/5sL3hd74/)
+//reset game without start-menu showing from https://jsfiddle.net/barmar/5sL3hd74/
 window.onload = function () {
   let reloading = sessionStorage.getItem("reloading");
   if (reloading) {
@@ -126,30 +134,12 @@ function reloadPage() {
 }
 resetBtn.addEventListener("click", reloadPage);
 
+//events on each elements
 document.querySelectorAll(".element").forEach((element) => {
-  //show Dialog
-  function showDialog() {
-    errorNumber = 0;
-    let placeholder = dialog.children[0];
-    let clonedElement = element.cloneNode(true);
-    placeholder.replaceWith(clonedElement);
-    dialog.classList.add("dialog-style");
-    dialog.classList.remove("hide");
-    input.focus();
-    input.select();
-    toggleTabNavigation(-1);
-  }
-  //show summary
-  function showSummary() {
-    elementSummary.classList.add("good-answer");
-    elementSummary.textContent = "";
-    elementSummary.textContent = element.getAttribute("summary");
-  }
-
   //show Dialog on click
   element.addEventListener("click", () => {
     if (!element.classList.contains("good-answer")) {
-      showDialog();
+      showDialog(element);
       table.classList.add("block-background");
     }
   });
@@ -160,19 +150,19 @@ document.querySelectorAll(".element").forEach((element) => {
       element.addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
           table.classList.add("block-background");
-          showDialog();
+          showDialog(element);
           errorNumber = -1;
         }
       });
     } else {
-      showSummary();
+      showSummary(element);
     }
   });
 
   //show summary on hover
   element.addEventListener("mouseover", () => {
     if (element.classList.contains("good-answer")) {
-      showSummary();
+      showSummary(element);
     }
   });
   //hide summary on mouse leaving
@@ -185,13 +175,31 @@ document.querySelectorAll(".element").forEach((element) => {
     elementSummary.textContent = "";
     elementSummary.classList.remove("good-answer");
   });
-
   //reaveal all info
   revealBtn.addEventListener("click", () => {
     revealInfo(element);
     revealBtn.classList.add("block-background");
   });
 });
+//show Dialog function
+function showDialog(element) {
+  errorNumber = 0;
+  let placeholder = dialog.children[0];
+  let clonedElement = element.cloneNode(true);
+  placeholder.replaceWith(clonedElement);
+  dialog.classList.add("dialog-style");
+  dialog.classList.remove("hide");
+  input.focus();
+  input.select();
+  toggleTabNavigation(-1);
+}
+//show summary function
+function showSummary(element) {
+  elementSummary.classList.add("good-answer");
+  elementSummary.textContent = "";
+  elementSummary.textContent = element.getAttribute("summary");
+}
+//reveal all info function
 function revealInfo(element) {
   element.classList.remove("elm-hover");
   element.classList.add("good-answer");
@@ -203,7 +211,7 @@ function revealInfo(element) {
   );
 }
 
-//various keydown events
+//various keydown events on document
 document.addEventListener("keydown", (event) => {
   //close input field
   if (event.key === "Escape") {
