@@ -1,6 +1,6 @@
 //import data
-import { elements } from "./data/elements.js";
-import { nomFR } from "./data/nomFR.js";
+import { elements } from "./elements.js";
+import { nomFR } from "./nomFR.js";
 
 //define global variables
 const root = document.querySelector(":root");
