@@ -17,9 +17,13 @@ const scoreCount = document.getElementById("score");
 const input = document.getElementById("input");
 const hintCounter = document.getElementById("hint-counter");
 const hintText = document.getElementById("hint-text");
+const ratioText = document.getElementById("ratio-text");
+const ratioPercent = document.getElementById("ratio-percent");
+
 const elementSummary = document.getElementById("element-summary");
 let hintCount = 0;
 let errorNumber = 0;
+let letters = 1;
 
 //assign data to cells
 fillCells();
@@ -52,17 +56,19 @@ function englishMode() {
       "Welcome! Do you want to learn about the elements in the universe? Get ready...";
     startMenu.children[2].innerText =
       "Select an element and guess its name. Try your best ;)";
+    startBtn.children[1].innerText = "start";
+    startBtn.children[2].innerText = "guess my name";
     langModeBtn.innerText = "Jouer en Français";
     hintBtn.innerText = "Get hint";
     hintText.innerText = "Hints used: ";
+    ratioText.innerText = "guess ratio ";
     resetBtn.innerText = "Reset table";
     revealBtn.innerText = "Reveal All";
     input.placeholder = "Guess the name";
 
     langModeBtn.classList.add("french");
     langModeBtn.classList.remove("english");
-
-    startBtn.focus();
+    window.focus();
   });
 }
 
@@ -70,6 +76,7 @@ function frenchMode() {
   nomFR.forEach((nom, i) => {
     let cell = document.querySelector(`.cell-${i + 1}`);
     let name = cell.children[2];
+    console.log(nomFR);
     name.innerText = nom;
 
     startMenu.children[0].innerText = "Mais Quel élément?!";
@@ -77,16 +84,19 @@ function frenchMode() {
       "Bienvenue ! Tu veux en savoir plus sur les éléments de l'univers ? Prépare-toi...";
     startMenu.children[2].innerText =
       "Sélectionne un élément et devine son nom. Fais de ton mieux ;)";
+    startBtn.children[1].innerText = "début";
+    startBtn.children[2].innerText = "devine mon nom";
     langModeBtn.innerText = "Switch to English";
     hintBtn.innerText = "Obtenir un indice";
     hintText.innerText = "Indices: ";
+    ratioText.innerText = "taux de savoir ";
     resetBtn.innerText = "réinitialiser tableau";
     revealBtn.innerText = "tout dévoiler";
     input.placeholder = "Devine le nom";
 
     langModeBtn.classList.add("english");
     langModeBtn.classList.remove("french");
-    startBtn.focus();
+    window.focus();
   });
 }
 
@@ -193,6 +203,18 @@ function showDialog(element) {
   input.select();
   toggleTabNavigation(-1);
 }
+//close dialog function
+function closeDialog() {
+  input.value = "";
+  table.classList.remove("block-background");
+  dialog.classList.remove("dialog-style");
+  dialog.classList.remove("wrong-enter");
+  dialog.classList.add("hide");
+  hintBtn.textContent = "Get a hint";
+  errorNumber = 0;
+  toggleTabNavigation(0);
+  ratioPercent.innerText = ((1 - hintCount / letters) * 100).toFixed(0);
+}
 //show summary function
 function showSummary(element) {
   elementSummary.classList.add("good-answer");
@@ -213,7 +235,7 @@ function revealInfo(element) {
 
 //various keydown events on document
 document.addEventListener("keydown", (event) => {
-  //close input field
+  //close dialog
   if (event.key === "Escape") {
     closeDialog();
   }
@@ -241,13 +263,16 @@ input.addEventListener("keyup", () => {
   let answer = input.value;
   if (answer.toLocaleLowerCase() === goodAnswer.toLocaleLowerCase()) {
     let element = table.querySelector(`.${selectedElementClass}`);
+    letters += answer.length;
     revealInfo(element);
     closeDialog();
   }
 });
 
-//add a hint
+//ask for a hint event
 hintBtn.addEventListener("click", () => {
+  totalHintClicks++;
+  console.log(totalHintClicks);
   let selectedElement = dialog.children[0];
   let goodAnswer = selectedElement.children[2].textContent.toLocaleLowerCase();
   let answer = input.value.toLocaleLowerCase();
@@ -273,16 +298,5 @@ hintBtn.addEventListener("click", () => {
   input.focus();
 });
 
-//close dialog
-function closeDialog() {
-  input.value = "";
-  table.classList.remove("block-background");
-  dialog.classList.remove("dialog-style");
-  dialog.classList.remove("wrong-enter");
-  dialog.classList.add("hide");
-  hintBtn.textContent = "Get a hint";
-  errorNumber = 0;
-  toggleTabNavigation(0);
-}
-
+// close dialog on click event
 closeBtn.addEventListener("click", closeDialog);

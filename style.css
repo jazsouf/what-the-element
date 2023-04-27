@@ -169,6 +169,7 @@ body {
   width: 12vw;
   opacity: 1;
   animation: flash 2s ease-in-out 20 alternate;
+  text-transform: uppercase;
 }
 
 .fake-element .name {
