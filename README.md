@@ -2,17 +2,16 @@
 
 ### About
 
-The game is about learning the periodic table of elements.
-
+What-The-Element?! is about learning the periodic table of elements.
 You have to guess the name of every element.
-
 If you guess right, the element is highlited in green and you gain a point.
-
 You also get some additionnal info and external link to learn more about the element you just guessed.
-
 If you guess wrong, you can be helped with hints.
-
 Hints give you help by simplifing the process. A letter from the element is revealed, one by one until your guess is correct.
+
+### How to Play
+
+To start playing What-The-Element?!, you can visit the game [website](https://jazsouf.github.io/what-the-element/). Once you're on the website, you can click on the "start" button to start the game. Select any element and type its name. If your guess is correct, the element will be highlighted in green and you will receive a point. You will also see some additional information about the element and a link to learn more about it. If your guess is incorrect, you will be given a hint to help you guess the correct symbol.
 
 ### Structure / TODO
 
@@ -51,9 +50,14 @@ Hints give you help by simplifing the process. A letter from the element is reve
 - [ ] Style input field
 - [ ] If you used a hint, put put different color
 
+### Conclusion
+
+What-The-Element?! is a fun and educational game that can help you learn the periodic table of elements. By playing the game, you can improve your knowledge of the elements and become a better chemist.
+
 ### Data
 
 Data from:
+
 https://github.com/Bowserinator/Periodic-Table-JSON
 
 http://kemi.fr/base-de-donnees
