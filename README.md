@@ -41,12 +41,12 @@ Hints give you help by simplifing the process. A letter from the element is reve
 - [x] Add a close dialog button
 - [x] Add explore mode (ie add class good-answer to all elements)
 - [x] Calculate ratio between hints and guesses // wrong tries vs good tries
+- [x] Fix bug on hint from random
 - [ ] Add a "click on an element" reminder if user doesn't do anything
-- [ ] Add finish screen with hint ratio // like solitary
+- [ ] Add finish screen with hint ratio // like solitaire
 - [ ] Add percent complete hover on bar
-- [ ] Fix bug on hint from random
 - [ ] Close input by click outside
-- [ ] Add legen with box, with "atomic number" "symbol" "name"
+- [ ] Add legend with box, with "atomic number" "symbol" "name"
 - [ ] Style input field
 - [ ] If you used a hint, put put different color
 
@@ -54,4 +54,5 @@ Hints give you help by simplifing the process. A letter from the element is reve
 
 Data from:
 https://github.com/Bowserinator/Periodic-Table-JSON
+
 http://kemi.fr/base-de-donnees
