@@ -44,7 +44,7 @@ function fillCells() {
 
 //language mode
 
-////functions
+////set english mode
 function englishMode() {
   french = false;
   elements.forEach((element, i) => {
@@ -73,12 +73,13 @@ function englishMode() {
   });
 }
 
+//set french mode
 function frenchMode() {
   french = true;
   nomFR.forEach((nom, i) => {
     let cell = document.querySelector(`.cell-${i + 1}`);
     let name = cell.children[2];
-    console.log(nomFR);
+
     name.innerText = nom;
 
     startMenu.children[0].innerText = "Mais Quel élément?!";
@@ -102,9 +103,8 @@ function frenchMode() {
   });
 }
 
-////event
+//change language mode
 langModeBtn.addEventListener("click", () => {
-  console.log("test");
   if (langModeBtn.classList.contains("french")) {
     frenchMode();
   } else if (langModeBtn.classList.contains("english")) {
@@ -112,15 +112,14 @@ langModeBtn.addEventListener("click", () => {
   }
 });
 
-//start game dynamic
-
+//start game
+startBtn.addEventListener("click", hideMenu);
 ////disable the start menu function
 function hideMenu() {
   startMenu.style.display = "none";
   table.classList.remove("block-background");
   toggleTabNavigation(0);
 }
-
 ////toggle tab navigation for accessibility
 function toggleTabNavigation(n) {
   elements.forEach((element, i) => {
@@ -129,22 +128,28 @@ function toggleTabNavigation(n) {
   });
 }
 
-////event
-startBtn.addEventListener("click", hideMenu);
+//reset game
+resetBtn.addEventListener("click", softReset);
 
-//reset game without start-menu showing from https://jsfiddle.net/barmar/5sL3hd74/
-window.onload = function () {
-  let reloading = sessionStorage.getItem("reloading");
-  if (reloading) {
-    sessionStorage.removeItem("reloading");
-    hideMenu();
+function softReset() {
+  scoreCount.innerText = 0;
+  root.style.setProperty("--progress", `0` + "%");
+  document.querySelectorAll(".element").forEach((element) => {
+    element.classList.remove("good-answer");
+    element.classList.add("elm-hover");
+    element.children[2].classList.remove("show-name");
+  });
+  revealBtn.classList.remove("block-background");
+  errorNumber = 0;
+  letters = 1;
+  ratioPercent.innerText = 0;
+  hintCount = 0;
+  hintCounter.innerText = 0;
+  // fillCells();
+  if (french) {
+    frenchMode();
   }
-};
-function reloadPage() {
-  sessionStorage.setItem("reloading", "true");
-  document.location.reload();
 }
-resetBtn.addEventListener("click", reloadPage);
 
 //events on each elements
 document.querySelectorAll(".element").forEach((element) => {
@@ -194,6 +199,7 @@ document.querySelectorAll(".element").forEach((element) => {
     revealBtn.classList.add("block-background");
   });
 });
+
 //show Dialog function
 function showDialog(element) {
   errorNumber = 0;
@@ -227,9 +233,8 @@ function showSummary(element) {
   elementSummary.textContent = "";
   elementSummary.textContent = element.getAttribute("summary");
 }
-//reveal all info function
+//reveal info function
 function revealInfo(element) {
-  element.classList.remove("elm-hover");
   element.classList.add("good-answer");
   element.children[2].classList.add("show-name");
   scoreCount.innerText++;
@@ -263,12 +268,13 @@ document.addEventListener("keydown", (event) => {
 input.addEventListener("keyup", () => {
   let selectedElement = dialog.children[0];
   let goodAnswer = selectedElement.children[2].textContent;
-  let selectedElementClass = selectedElement.classList[2];
+  console.log(selectedElement.classList);
+  let selectedElementCell = selectedElement.classList[2];
 
   //if correct answer at keyup
   let answer = input.value;
   if (answer.toLocaleLowerCase() === goodAnswer.toLocaleLowerCase()) {
-    let element = table.querySelector(`.${selectedElementClass}`);
+    let element = table.querySelector(`.${selectedElementCell}`);
     letters += answer.length;
     revealInfo(element);
     closeDialog();

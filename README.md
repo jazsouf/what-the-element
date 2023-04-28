@@ -42,6 +42,7 @@ Hints give you help by simplifing the process. A letter from the element is reve
 - [x] Add explore mode (ie add class good-answer to all elements)
 - [x] Calculate ratio between hints and guesses // wrong tries vs good tries
 - [x] Fix bug on hint from random
+- [x] Add a soft reset
 - [ ] Add a "click on an element" reminder if user doesn't do anything
 - [ ] Add finish screen with hint ratio // like solitaire
 - [ ] Add percent complete hover on bar
