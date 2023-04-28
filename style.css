@@ -346,7 +346,7 @@ footer {
 }
 
 #reminder {
-  z-index: 1;
+  z-index: -1;
   font-size: 2.5vw;
   text-transform: capitalize;
   color: #65961c;
