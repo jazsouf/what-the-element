@@ -222,7 +222,7 @@ body {
   padding: 2rem;
   margin: auto;
   background-color: #192e2e;
-  width: 50%;
+  width: 35%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -253,7 +253,12 @@ body {
 }
 
 #input::placeholder {
-  opacity: 0.3;
+  opacity: 0.5;
+}
+
+#input:focus {
+  border: none;
+  outline: none;
 }
 
 #hint-btn {
@@ -337,6 +342,18 @@ footer {
     #65961c00 var(--progress),
     #65961c00 100%
   );
+}
+
+#reminder {
+  z-index: 1;
+  font-size: 2.5vw;
+  text-transform: capitalize;
+  color: #65961c;
+  position: absolute;
+  top: 5%;
+  left: 25%;
+  transform: translateX(-50%);
+  animation: flash 3s ease-in-out 5 backwards;
 }
 
 .link {

@@ -20,10 +20,12 @@ const hintText = document.getElementById("hint-text");
 const ratioText = document.getElementById("ratio-text");
 const ratioPercent = document.getElementById("ratio-percent");
 const elementSummary = document.getElementById("element-summary");
+const reminder = document.getElementById("reminder");
 let hintCount = 0;
 let errorNumber = 0;
 let letters = 1;
 let french = false;
+let click = false;
 
 //assign data to cells
 fillCells();
@@ -63,6 +65,7 @@ function englishMode() {
     hintBtn.innerText = "Get hint";
     hintText.innerText = "Hints used: ";
     ratioText.innerText = "guess ratio ";
+    reminder.innerText = "click on any cell!";
     resetBtn.innerText = "Reset table";
     revealBtn.innerText = "Reveal All";
     input.placeholder = "Guess the name";
@@ -93,6 +96,7 @@ function frenchMode() {
     hintBtn.innerText = "Obtenir un indice";
     hintText.innerText = "Indices: ";
     ratioText.innerText = "taux de savoir ";
+    reminder.innerText = "Clique sur une case!";
     resetBtn.innerText = "réinitialiser tableau";
     revealBtn.innerText = "tout dévoiler";
     input.placeholder = "Devine le nom";
@@ -202,6 +206,8 @@ document.querySelectorAll(".element").forEach((element) => {
 
 //show Dialog function
 function showDialog(element) {
+  click = true;
+  reminder.classList.add("hide");
   errorNumber = 0;
   let placeholder = dialog.children[0];
   let clonedElement = element.cloneNode(true);
@@ -268,7 +274,6 @@ document.addEventListener("keydown", (event) => {
 input.addEventListener("keyup", () => {
   let selectedElement = dialog.children[0];
   let goodAnswer = selectedElement.children[2].textContent;
-  console.log(selectedElement.classList);
   let selectedElementCell = selectedElement.classList[2];
 
   //if correct answer at keyup
@@ -314,3 +319,11 @@ hintBtn.addEventListener("click", () => {
 
 // close dialog on click event
 closeBtn.addEventListener("click", closeDialog);
+
+//reminder to click
+
+setInterval(() => {
+  if (!click) {
+    reminder.classList.remove("hide");
+  }
+}, 5000);

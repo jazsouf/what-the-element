@@ -13,7 +13,7 @@ To start playing What-The-Element?!, you can visit the game [website](https://ja
 
 Once you're on the website, choose if you want to play in English or in French (support for other languages are in progress)
 
-You can click on the "Start" button or press "Enter" to start the game.
+You can click on the "START" button or press "Enter" to start the game.
 
 Select any element and type its name.
 
