@@ -230,6 +230,7 @@ body {
   gap: 2rem;
   border-radius: 6px;
   border: #dc143c70 1px solid;
+  outline: #192e2eaa 100vw solid;
 }
 
 .wrong-enter {

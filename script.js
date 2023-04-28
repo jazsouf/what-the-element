@@ -322,8 +322,8 @@ closeBtn.addEventListener("click", closeDialog);
 
 //reminder to click
 
-setInterval(() => {
+const intervalID = setInterval(() => {
   if (!click) {
     reminder.classList.remove("hide");
   }
-}, 5000);
+}, 6000);
