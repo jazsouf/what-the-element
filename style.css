@@ -354,7 +354,7 @@ footer {
   top: 5%;
   left: 25%;
   transform: translateX(-50%);
-  animation: flash 3s ease-in-out 5 backwards;
+  animation: flash 3s ease-in-out 10 backwards;
 }
 
 .link {
