@@ -215,7 +215,7 @@ body {
 
 .dialog-style {
   position: fixed;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
@@ -405,10 +405,10 @@ footer {
 
    .fake-element .symbol, .fake-element .number,
   .element .name, .element .symbol, .element .number {
-    font-size: 5px; /* Changed from vw */
+    font-size: 4px; /* Changed from vw */
   }
-  .fake-element .name {
-    font-size: 3px;
+  .name {
+    display: hidden !important;
   }
 
   /* Buttons */
