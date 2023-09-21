@@ -375,3 +375,61 @@ footer {
     opacity: 1;
   }
 }
+
+/* Existing CSS Code */
+
+/* Responsive Media Query Starts */
+@media (max-width: 768px) {
+
+  /* Start Menu */
+  #start-menu {
+    gap: 10px; /* Reduced gap */
+  }
+
+  /* Lang mode */
+  #lang-mode {
+    font-size: 16px; /* Changed from vw */
+    padding: 10px 0;
+  }
+
+  /* Text Elements */
+  .title {
+    font-size: 2.5em; /* Changed from vw */
+  }
+  .intro, .description {
+    font-size: 1em; /* Changed from vw */
+  }
+
+  /* Grid Layout */
+ 
+
+  .fake-element .name, .fake-element .symbol, .fake-element .number,
+  .element .name, .element .symbol, .element .number {
+    font-size: 3px; /* Changed from vw */
+  }
+
+  /* Buttons */
+  #hint-btn, #reset-btn, #reveal-btn {
+    font-size: 7px; /* Changed from vw */
+  }
+
+  /* Scoresheet */
+  #scoresheet {
+    font-size: 2em; /* Changed from vw */
+  }
+  #hints, #ratio {
+    font-size: 12px; /* Changed from vw */
+  }
+
+  /* Footer */
+  footer {
+    font-size: 14px; /* Changed from svh */
+  }
+
+  /* Reminder */
+  #reminder {
+    font-size: 1.5em; /* Changed from vw */
+  }
+
+}
+/* Responsive Media Query Ends */
