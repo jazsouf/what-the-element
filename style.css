@@ -407,7 +407,7 @@ footer {
   .element .name, .element .symbol, .element .number {
     font-size: 4px; /* Changed from vw */
   }
-  .name {
+  .element .name {
     display: hidden !important;
   }
 
@@ -431,7 +431,8 @@ footer {
 
   /* Reminder */
   #reminder {
-    font-size: 1.5em; /* Changed from vw */
+    font-size: 1em;
+   mix-blend-mode: difference;
   }
 
   
