@@ -388,7 +388,7 @@ footer {
 
   /* Lang mode */
   #lang-mode {
-    font-size: 16px; /* Changed from vw */
+    font-size: 5px; /* Changed from vw */
     padding: 10px 0;
   }
 
@@ -403,9 +403,12 @@ footer {
   /* Grid Layout */
  
 
-  .fake-element .name, .fake-element .symbol, .fake-element .number,
+   .fake-element .symbol, .fake-element .number,
   .element .name, .element .symbol, .element .number {
-    font-size: 3px; /* Changed from vw */
+    font-size: 5px; /* Changed from vw */
+  }
+  .fake-element .name {
+    font-size: 3px;
   }
 
   /* Buttons */
@@ -430,6 +433,8 @@ footer {
   #reminder {
     font-size: 1.5em; /* Changed from vw */
   }
+
+  
 
 }
 /* Responsive Media Query Ends */
